@@ -1110,7 +1110,7 @@
                   // Initialize counters
                   nextId = 1;
                   propertyId = newProperty.dealType === 'rent' ? 'RNT00001' : 'SLE00001';
-                  await setDoc(counterRef, {
+                  await counterRef.set({
                     nextRentId: newProperty.dealType === 'rent' ? 2 : 1,
                     nextSaleId: newProperty.dealType === 'sale' ? 2 : 1
                   });
@@ -1139,7 +1139,7 @@
 
               if (window.firebaseDB) {
                 // Save to Firestore with custom ID
-                await setDoc(doc(window.firebaseDB, 'properties', propertyId), property);
+                await window.firebaseDB.collection('properties').doc(propertyId).set(property);
                 
                 // Add to local state
                 setProperties(prev => [property, ...prev]);
