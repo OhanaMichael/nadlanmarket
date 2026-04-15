@@ -946,38 +946,38 @@
 
           const handleRegister = async (userData) => {
             try {
-              // Check if username exists in Firestore
-              const usersRef = window.firebaseDB ? collection(window.firebaseDB, 'users') : null;
-              if (usersRef) {
-                const q = query(usersRef, where('username', '==', userData.username));
-                const querySnapshot = await getDocs(q);
+              if (window.firebaseDB) {
+                // Check if username exists in Firestore
+                const usersRef = window.firebaseDB.collection('users');
+                const usernameQuery = await usersRef.where('username', '==', userData.username).get();
                 
-                if (!querySnapshot.empty) {
+                if (!usernameQuery.empty) {
                   return { success: false, message: 'שם המשתמש כבר קיים' };
                 }
 
                 // Create Firebase Auth user
-                const userCredential = await createUserWithEmailAndPassword(
-                  window.firebaseAuth,
+                const userCredential = await window.firebaseAuth.createUserWithEmailAndPassword(
                   userData.email,
                   userData.password
                 );
 
                 // Send verification email
-                await sendEmailVerification(userCredential.user);
+                await userCredential.user.sendEmailVerification();
 
-                // Save user data to Firestore
+                // Save user data to Firestore with UID as document ID
                 const newUser = {
                   uid: userCredential.user.uid,
                   username: userData.username,
                   name: userData.name,
                   email: userData.email,
                   phone: userData.phone,
-                  role: USER_ROLES.REGULAR,
+                  role: userData.role || USER_ROLES.REGULAR,
+                  favorites: [],
                   createdAt: new Date().toISOString()
                 };
 
-                await addDoc(usersRef, newUser);
+                // CRITICAL: Use the UID as the document ID!
+                await usersRef.doc(userCredential.user.uid).set(newUser);
 
                 alert('✅ נרשמת בהצלחה!\n\n📧 נשלח אליך מייל אימות.\nאנא אמת את המייל שלך לפני ההתחברות.\n\n⚠️ לא מצאת את המייל?\nבדוק גם בתיקיית Spam/דואר זבל!');
                 
@@ -1009,7 +1009,20 @@
               }
             } catch (error) {
               console.error('Registration error:', error);
-              return { success: false, message: 'שגיאה ברישום: ' + error.message };
+              
+              // Provide more specific error messages
+              let errorMessage = 'שגיאה ברישום: ';
+              if (error.code === 'auth/email-already-in-use') {
+                errorMessage = 'כתובת האימייל כבר בשימוש';
+              } else if (error.code === 'auth/invalid-email') {
+                errorMessage = 'כתובת אימייל לא תקינה';
+              } else if (error.code === 'auth/weak-password') {
+                errorMessage = 'הסיסמה חלשה מדי';
+              } else {
+                errorMessage += error.message;
+              }
+              
+              return { success: false, message: errorMessage };
             }
           };
 
