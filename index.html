@@ -7,6 +7,24 @@
     <title>נדלן מרקט | דירות למכירה והשכרה בכל הארץ - פורטל נדל"ן מוביל</title>
     <meta name="description" content="נדלן מרקט - מצאו דירות למכירה, דירות להשכרה ונכסים בכל רחבי ישראל. אלפי מודעות מעודכנות, חיפוש מתקדם וממשק ידידותי. הפורטל המוביל לנדל״ן בישראל.">
     <meta name="keywords" content="נדלן מרקט, דירות למכירה, דירות להשכרה, נדלן בישראל, קניית דירה, השכרת דירה, נכסים">
+
+    <!-- Crawl & indexing directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://nadlanmarket.co.il/">
+    <link rel="alternate" hreflang="he-IL" href="https://nadlanmarket.co.il/">
+    <link rel="alternate" hreflang="x-default" href="https://nadlanmarket.co.il/">
+
+    <!-- Favicon & app icons -->
+    <link rel="icon" type="image/jpeg" href="/nm_logo.jpg">
+    <link rel="apple-touch-icon" href="/nm_logo.jpg">
+    <meta name="theme-color" content="#1e3a8a">
+
+    <!-- Performance: preconnect to third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
     <meta property="og:title" content="נדלן מרקט | פורטל נדל״ן מוביל בישראל">
     <meta property="og:description" content="מצאו את הבית המושלם בנדלן מרקט - אלפי דירות למכירה והשכרה בכל הארץ">
     <meta property="og:type" content="website">
@@ -29,16 +47,57 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "RealEstateAgent",
-      "name": "נדלן מרקט",
-      "description": "פורטל נדל״ן מוביל בישראל - דירות למכירה והשכרה",
-      "url": "https://nadlanmarket.co.il",
-      "telephone": "+972-50-5750000",
-      "email": "michael@itmo.co.il",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "IL"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://nadlanmarket.co.il/#website",
+          "name": "נדלן מרקט",
+          "alternateName": "Nadlan Market",
+          "url": "https://nadlanmarket.co.il/",
+          "inLanguage": "he-IL",
+          "description": "פורטל נדל״ן מוביל בישראל - דירות למכירה והשכרה בכל הארץ",
+          "publisher": { "@id": "https://nadlanmarket.co.il/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://nadlanmarket.co.il/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://nadlanmarket.co.il/#organization",
+          "name": "נדלן מרקט",
+          "url": "https://nadlanmarket.co.il/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://nadlanmarket.co.il/nm_logo.jpg",
+            "width": 1200,
+            "height": 630
+          },
+          "email": "michael@itmo.co.il",
+          "telephone": "+972-50-5750000",
+          "areaServed": { "@type": "Country", "name": "Israel" }
+        },
+        {
+          "@type": "RealEstateAgent",
+          "@id": "https://nadlanmarket.co.il/#realestateagent",
+          "name": "נדלן מרקט",
+          "description": "פורטל נדל״ן מוביל בישראל - דירות למכירה והשכרה",
+          "url": "https://nadlanmarket.co.il/",
+          "telephone": "+972-50-5750000",
+          "email": "michael@itmo.co.il",
+          "image": "https://nadlanmarket.co.il/nm_logo.jpg",
+          "priceRange": "₪₪",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IL"
+          },
+          "areaServed": { "@type": "Country", "name": "Israel" }
+        }
+      ]
     }
     </script>
     
@@ -195,7 +254,31 @@
   </script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Server-visible fallback for crawlers & no-JS visitors. React replaces this on load. -->
+        <header>
+            <h1>נדלן מרקט - דירות למכירה והשכרה בכל הארץ</h1>
+            <p>פורטל הנדל״ן המוביל בישראל. אלפי דירות ונכסים למכירה ולהשכרה בכל רחבי הארץ, עם חיפוש מתקדם לפי עיר, מספר חדרים, מחיר וסוג עסקה.</p>
+        </header>
+        <nav aria-label="ניווט ראשי">
+            <a href="/">דף הבית</a> |
+            <a href="/?dealType=sale">דירות למכירה</a> |
+            <a href="/?dealType=rent">דירות להשכרה</a> |
+            <a href="/?view=about">אודות</a> |
+            <a href="/?view=contact">צור קשר</a>
+        </nav>
+        <main>
+            <h2>מה תמצאו בנדלן מרקט</h2>
+            <p>דירות למכירה, דירות להשכרה, פנטהאוזים, דירות גן, דירות גינה, בתים פרטיים ונכסים מסחריים בתל אביב, ירושלים, חיפה, באר שבע, ראשון לציון ובכל הערים בישראל.</p>
+        </main>
+    </div>
+    <noscript>
+        <div style="max-width:800px;margin:40px auto;padding:0 20px;font-family:sans-serif;direction:rtl;text-align:right">
+            <h1>נדלן מרקט - פורטל נדל״ן מוביל בישראל</h1>
+            <p>אתר נדלן מרקט דורש JavaScript כדי להציג את מאגר הדירות המלא. אנא הפעילו JavaScript בדפדפן, או צרו קשר במייל michael@itmo.co.il.</p>
+            <p>בנדלן מרקט תמצאו דירות למכירה ולהשכרה בכל רחבי ישראל, חיפוש מתקדם לפי עיר ומחיר, ופרסום נכסים בחינם.</p>
+        </div>
+    </noscript>
 
     <script type="text/babel">
         const { useState, useEffect, useMemo } = React;
@@ -2126,7 +2209,7 @@
                       <div className="p-6">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           <div className="md:col-span-1">
-                            <img src={property.images[0]} alt={property.title} className="w-full h-48 object-cover rounded-lg" />
+                            <img src={property.images[0]} alt={`${property.title} - ${property.city}`} loading="lazy" decoding="async" className="w-full h-48 object-cover rounded-lg" />
                             <p className="text-sm text-gray-500 mt-2">{property.images.length} תמונות</p>
                           </div>
                           
@@ -2515,7 +2598,9 @@
               <div className="relative" onClick={onClick}>
                 <img
                   src={property.images[0]}
-                  alt={property.title}
+                  alt={`${property.title} - ${property.city}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-56 object-cover"
                 />
                 
@@ -2876,7 +2961,8 @@
               <div className="relative mb-8 rounded-xl overflow-hidden">
                 <img
                   src={property.images[currentImageIndex]}
-                  alt={property.title}
+                  alt={`${property.title} - ${property.city}${property.neighborhood ? ', ' + property.neighborhood : ''}`}
+                  decoding="async"
                   className="w-full h-96 md:h-[500px] object-cover"
                 />
               </div>
@@ -3711,7 +3797,9 @@
 
                         <img
                           src={property.images[0]}
-                          alt={property.title}
+                          alt={`${property.title} - ${property.city}`}
+                          loading="lazy"
+                          decoding="async"
                           className="w-32 h-32 object-cover rounded-lg cursor-pointer"
                           onClick={() => toggleSelectProperty(property.id)}
                         />
@@ -4147,7 +4235,9 @@
                           <div key={index} className="relative group">
                             <img
                               src={image}
-                              alt={`תמונה ${index + 1}`}
+                              alt={`תמונת נכס ${index + 1}`}
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-32 object-cover rounded-lg border-2 border-blue-500"
                             />
                             <button

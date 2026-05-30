@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Block Firebase/internal query noise if needed (none currently)
+
+Sitemap: https://nadlanmarket.co.il/sitemap.xml
